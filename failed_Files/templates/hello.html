@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Hello!{% endblock %}
+{% block head %}
+{{ super() }}
+<script>
+	function helloText(){
+		let text1 = document.getElementById("HelloText");
+		window.location.href = "/hello/"+text1.value;
+	}
+	function helloText2(e){
+		if(e.keyCode == 13){
+			let text1 = document.getElementById("HelloText");
+			window.location.href = "/hello/"+text1.value;
+		}
+	}
+</script>
+{% endblock %}
+{% block content %}
+<div class="centerContent">
+	{% if name %}
+	<h1>Hello {{ name }}!</h1>
+	{% else %}
+	<h1>Hello World!</h1>
+	{% endif %}
+	<div id="helloTest"><input type="text" name="" id="HelloText" onkeypress="helloText2(event)"><button onclick="helloText()">TEST!</button></div>
+</div>
+{% endblock %}

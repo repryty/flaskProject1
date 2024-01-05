@@ -1,0 +1,17 @@
+@media (min-height: 800px) { /*800px 이상*/
+    :root{
+        --nav-height: 7vh;
+        --footer-direction: row;
+    }
+}
+@media (max-height: 800px) { /*800px 이하*/
+    :root{
+        --nav-height: 10vh;
+        --footer-direction: column;
+    }
+}
+
+body{
+    margin: var(--nav-height) 0 0 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}

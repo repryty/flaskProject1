@@ -1,0 +1,48 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    {% endblock %}
+    <style>
+        @font-face {
+            font-family: 'GmarketSansMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='img/REEPSTORE_LOGO.png') }}" alt="" id="profile">
+        <ul>
+            {% for item in navigation %}
+                <li><a href="{{ item.href }}"><button>{{  item.caption }}</button></a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>
+        <div>
+            <h1>REEP Web</h1>
+            Copyright © REEPSTORE
+        </div>
+        {% for category in footer %}
+        <div>
+            <ul>
+                <li><h3>{{ category["title"] }}</h3></li>
+                {% for lists in category["lists"] %}
+                <li><a href="{{ lists['href'] }}">{{ lists["caption"] }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </footer>
+</body>
+</html>
